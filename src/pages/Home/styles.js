@@ -1,15 +1,10 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components';
+import colors from '../../styles/colors';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  wrapBanner: {
-    height: 250,
-  },
-  scrollHorizontal: {
-    marginTop: 30
-  },
-});
+export const Banner = styled.View`
+  height: 250px;
+`;
 
-export default styles;
+export const Scroll = styled.ScrollView`
+  margin-top: 30px;
+`;

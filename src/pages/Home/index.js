@@ -2,29 +2,27 @@ import React from 'react';
 import {
   View, StatusBar, FlatList, ScrollView,
 } from 'react-native';
+import { Banner, Scroll } from './styles';
+import { Content } from '../../styles/general';
+import { colors }  from '../../styles';
 import Header from '../../component/Header';
 import SwiperComponent from '../../component/SwiperComponent';
 import CarrouselProduct from '../../component/CarrouselProduct';
 import CarrouselCategory from '../../component/CarrouselCategory';
-
-import styles from './styles';
-import { colors, general }  from '../../styles';
 import ListPromocoes from '../../json/ListPromocoes';
 import ListCategory from '../../json/ListCategory';
 
 const Home = ({ navigation }) => {
   return (
-    <View
-      style={styles.container}
-    >
+    <Content>
       <StatusBar barStyle="light-content" backgroundColor={colors.statusBar} />
       <Header navigation={navigation} />
       <ScrollView>
-        <View style={styles.wrapBanner}>
+        <Banner>
           <SwiperComponent/>
-        </View>
+        </Banner>
         <View>
-          <ScrollView horizontal={true} style={styles.scrollHorizontal}>
+          <Scroll horizontal={true}>
             <FlatList
               data={ListPromocoes}
               contentContainerStyle={{ flexDirection: 'row' }}
@@ -35,10 +33,10 @@ const Home = ({ navigation }) => {
                 />
               }
             />
-          </ScrollView>
+          </Scroll>
         </View>
         <View>
-        <ScrollView horizontal={true} style={styles.scrollHorizontal}>
+        <Scroll horizontal={true}>
           <FlatList
             data={ListCategory}
             contentContainerStyle={{ flexDirection: 'row' }}
@@ -49,10 +47,10 @@ const Home = ({ navigation }) => {
               />
             }
           />
-        </ScrollView>
+        </Scroll>
         </View>
       </ScrollView>
-    </View>
+    </Content>
   );
 }
 

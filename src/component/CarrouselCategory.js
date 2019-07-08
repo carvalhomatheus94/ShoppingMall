@@ -1,32 +1,32 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, ScrollView, Text } from 'react-native';
+import styled from 'styled-components';
 import colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const CarrouselCategory = ({
   data
 }) => (
-  <TouchableOpacity style={styles.row}>
+  <Button>
     <Icon name={data.icon} size={25} color={colors.regular} />
-    <Text style={styles.p}>{data.name}</Text>
-  </TouchableOpacity>
+    <P>{data.name}</P>
+  </Button>
 );
-const styles = StyleSheet.create({
-  row: {
-    width: 100,
-    height: 100,
-    borderWidth: 1,
-    borderColor: colors.regular,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 5,
-    flexDirection: 'column',
-  },
-  p: {
-    color: colors.regular,
-    fontSize: 18,
-  },
-})
+
+export const Button = styled.TouchableOpacity`
+  width: 100px;
+  height: 100px;
+  border-width: 1px;
+  border-color: ${colors.regular};
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  flex-direction: column
+`;
+
+export const P = styled.Text`
+  color: ${colors.regular};
+  font-size: 18px;
+`;
 
 export default CarrouselCategory;

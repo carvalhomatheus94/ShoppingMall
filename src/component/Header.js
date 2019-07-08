@@ -1,40 +1,40 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { colors } from '../styles';
 
 const Header = ({ navigation }) => (
-  <View style={styles.header}>
-    <TouchableOpacity style={styles.flexGrow} onPress={() => navigation.toggleDrawer()}>
+  <ViewHeader>
+    <Button onPress={() => navigation.toggleDrawer()}>
       <Icon name="bars" size={30} color={colors.white} />
-    </TouchableOpacity>
-    <Text style={styles.h1}>Home</Text>
-    <TouchableOpacity style={styles.navIcon} onPress={() => console.log('clcik')}>
+    </Button>
+    <Title>Home</Title>
+    <Button onPress={() => console.log('clcik')}>
       <Icon name="search" size={30} color={colors.white} />
-    </TouchableOpacity>
-  </View>
+    </Button>
+  </ViewHeader>
 );
 
-const styles = StyleSheet.create({
-  header: {
-    height: 85,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 15,
-    backgroundColor: colors.background,
-  },
-  flexGrow: {
-    flexGrow: 1,
-    // position: 'absolute',
-    // left: 15,
-  },
-  h1: {
-    flexGrow: 1,
-    fontSize: 20,
-    color: colors.white,
-  },
-})
+
+export const ViewHeader = styled.View`
+  height: 85px;
+  flex-direction: row;
+  align-items: center;
+  background: ${colors.primary};
+  width: 100%;
+  padding: 0 15px;
+`;
+
+export const Button = styled.TouchableOpacity`
+  flex-grow: 1;
+`;
+
+export const Title = styled.Text`
+  flex-grow: 1;
+  text-align: center;
+  font-size: 20px;
+  width: 80%;
+  color: ${colors.white}
+`;
 
 export default Header;
