@@ -10,28 +10,101 @@ import {
 import Splash from '../pages/Splash';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-// import Home from '../pages/Home';
-import { HomeStackNavigator } from './stacks/HomeStack';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+
+import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 import { colors } from '../styles';
 import DrawerSidebar from '../component/DrawerSidebar';
+
+import { HomeStackNavigator } from './stacks/HomeStack';
+import { HappensStackNavigator } from './stacks/HappensStack';
+import { MovieStackNavigator } from './stacks/MovieStack';
+import { RecreationStackNavigator } from './stacks/RecreationStack';
+import { StoresStackNavigator } from './stacks/StoresStack';
+import { FoodStackNavigator } from './stacks/FoodStack';
+import Home from '../pages/Home';
 
 const TabBarMain = createBottomTabNavigator({
   HomeStackNavigator: {
     screen: HomeStackNavigator,
+    navigationOptions: {
+      tabBarLabel: 'INICIO',
+      tabBarIcon: ({ focused, tintColor }) => (
+        focused ? (
+          <Icon name="home" size={20} color={colors.white} />
+        ) : (
+          <Icon name="home" size={20} color={colors.darker} />
+        )
+      ),
+    },
+  },
+  HappensStackNavigator: {
+    screen: HappensStackNavigator,
       navigationOptions: {
-        tabBarLabel: 'HOME',
+        tabBarLabel: 'ACONTECE',
         tabBarIcon: ({ focused, tintColor }) => (
           focused ? (
-            <Icon name="home" size={30} color={colors.white} />
+            <Icon name="thumbs-up" size={20} color={colors.white} />
           ) : (
-            <Icon name="home" size={30} color={colors.darker} />
+            <Icon name="thumbs-up" size={20} color={colors.darker} />
           )
         ),
       },
   },
+  MovieStackNavigator: {
+    screen: MovieStackNavigator,
+      navigationOptions: {
+        tabBarLabel: 'CINEMA',
+        tabBarIcon: ({ focused, tintColor }) => (
+          focused ? (
+            <Icon name="film" size={20} color={colors.white} />
+          ) : (
+            <Icon name="film" size={20} color={colors.darker} />
+          )
+        ),
+      },
+  },
+  RecreationStackNavigator: {
+    screen: RecreationStackNavigator,
+      navigationOptions: {
+        tabBarLabel: 'LAZER',
+        tabBarIcon: ({ focused, tintColor }) => (
+          focused ? (
+            <Icon name="gamepad" size={20} color={colors.white} />
+          ) : (
+            <Icon name="gamepad" size={20} color={colors.darker} />
+          )
+        ),
+      },
+  },
+  StoresStackNavigator: {
+    screen: StoresStackNavigator,
+      navigationOptions: {
+        tabBarLabel: 'LOJAS',
+        tabBarIcon: ({ focused, tintColor }) => (
+          focused ? (
+            <Icon name="store" size={20} color={colors.white} />
+          ) : (
+            <Icon name="store" size={20} color={colors.darker} />
+          )
+        ),
+      },
+  },
+  // FoodStackNavigator: {
+  //   screen: FoodStackNavigator,
+  //     navigationOptions: {
+  //       tabBarLabel: 'ALIMENTAÇÃO',
+  //       tabBarIcon: ({ focused, tintColor }) => (
+  //         focused ? (
+  //           <Icon name="hamburger" size={20} color={colors.white} />
+  //         ) : (
+  //           <Icon name="hamburger" size={20} color={colors.darker} />
+  //         )
+  //       ),
+  //     },
+  // },
 },
   {
+    initialRouteName: 'HomeStackNavigator',
     animationEnabled: false,
     tabBarPosition: 'bottom',
     tabBarOptions: {
@@ -40,14 +113,19 @@ const TabBarMain = createBottomTabNavigator({
       activeTintColor: colors.white,
       inactiveTintColor: colors.darker,
       labelStyle: {
-        fontSize: 8,
+        fontSize: 10,
+        paddingBottom: 15
       },
       style: {
-        backgroundColor: colors.background,
+        backgroundColor: colors.primary,
         borderTopColor: '#000',
-        fontSize: 13,
+        paddingTop: 12,
+        height: 80,
         shadowOpacity: 0.75,
+        paddingHorizontal: 15,
         shadowRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
         shadowColor: 'red',
         shadowOffset: { height: 0, width: 0 },
       },
@@ -73,7 +151,8 @@ const MainStack = createStackNavigator(
     TabBarMain: { screen: TabBarMain },
     Register: { screen: Register },
     Login: { screen: Login },
-    Splash: { screen: Splash }
+    Splash: { screen: Splash },
+    HomeStackNavigator: { screen: HomeStackNavigator },
   },
   {
     headerMode: 'none',
